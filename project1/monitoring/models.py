@@ -52,12 +52,11 @@ class Probe(models.Model):
 
 
 
-class HostStatus(models.Model):
+class HostGroup(models.Model):
 	group = models.ForeignKey('Group', on_delete=models.CASCADE, default=1,)
 	host = models.ForeignKey('Host', on_delete=models.CASCADE, )
-	status = models.ForeignKey('Status', on_delete=models.CASCADE, null=True, blank=True,)
 	def __str__(self): 
-		return "%s-%s-%s"%(self.group,self.host,self.status)
+		return "%s-%s"%(self.group,self.host)
 
 #class ProbeHostStatus(models.Model):
 #	group = models.ForeignKey('Group', on_delete=models.CASCADE, default=1, related_name="probe_group")

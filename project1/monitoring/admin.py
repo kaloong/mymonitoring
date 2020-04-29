@@ -1,16 +1,16 @@
 from django.contrib import admin
-from monitoring.models import Dashboard,DashboardGroup,Group,Probe,Host,Status,HostStatus
+from monitoring.models import Dashboard,DashboardGroup,Group,Probe,Host,Status,HostGroup
 
 
 # Register your models here.
 admin.site.site_header="My Monitoring"
 
-class HostStatusAdmin(admin.ModelAdmin):
-	list_display=['group','host','status']
+class HostGroupAdmin(admin.ModelAdmin):
+	list_display=['group','host']
 	save_as = True
 
-class HostStatusInline(admin.TabularInline):
-	model = HostStatus
+class HostGroupInline(admin.TabularInline):
+	model = HostGroup
 	extra = 2 
 
 class GroupAdmin(admin.ModelAdmin):
@@ -21,7 +21,8 @@ class GroupAdmin(admin.ModelAdmin):
 	('Code name', {'fields':['code']} ),  
 	('Group probe', {'fields':['groupprobe']} ),  
 	]
-	inlines = [HostStatusInline]
+	inlines = [HostGroupInline]
+	ordering = ['name']
 
 class GroupInline(admin.StackedInline):
 	model = Group
@@ -60,4 +61,4 @@ admin.site.register(Group, GroupAdmin)
 admin.site.register(Probe, ProbeAdmin)
 admin.site.register(Host, HostAdmin)
 admin.site.register(Status, StatusAdmin)
-admin.site.register(HostStatus, HostStatusAdmin)
+admin.site.register(HostGroup, HostGroupAdmin)
