@@ -1,0 +1,19 @@
+<p>{{ dashboard }}</p>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+{% if groups %}
+	{% for group in groups.all %}
+		<table style="text-align: left">
+		<tr>{{ group| linebreaks }}</tr>
+		{% for host in group.hosts.all %} 
+			<td style="text-align: left ">{{host }}</td>
+		{% endfor %}
+		</table>
+	{% endfor %}
+
+{% else %}
+	<p>No groups</p>
+{% endif %}

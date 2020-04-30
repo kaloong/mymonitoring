@@ -1,0 +1,7 @@
+{% if dashboard_list %}
+	{% for dashboard in dashboard_list %}
+		<li><a href="/monitoring/dashboard/{{dashboard.id}}/">{{ dashboard.name }}</a></li>
+	{% endfor %}
+{% else %}
+	<p>No dashboards are available.</p>
+{% endif %}
