@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
+from monitoring.models import DashboardGroup, Dashboard, Group, Host
+from django.views.generic.detail import DetailView
 #from django.http import HttpResponse
 #from django.template import loader
-from monitoring.models import DashboardGroup, Dashboard, Group, Host
+
 # Create your views here.
 def index(request):
 	dashboard_list=Dashboard.objects.order_by('name')
@@ -26,7 +28,12 @@ def dashboard_detail( request, dashbrd_id):
 	context = { 'dashboard': dashboard , 'groups': groups }
 	return render( request, 'monitoring/dashboard_detail.html', context )
 
+
 def host_detail( request, dashbrd_id, host_id):
 	host = get_object_or_404( Host, id=host_id)
 	context = { 'host': host }
 	return render( request, 'monitoring/host_detail.html',context)
+
+class host_detail_view( DetailView):
+	model = Host
+	template_name = 'monitoring/host_detail.html'

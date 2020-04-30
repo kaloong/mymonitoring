@@ -1,13 +1,10 @@
+{% extends 'monitoring/base.html' %}
+{% block content %}
 <p>{{ dashboard }}</p>
-<style>
-table, th, td {
-  border: 1px solid black;
-}
-</style>
 {% if groups %}
 	{% for group in groups.all %}
 		<tr>{{ group| linebreaks }}</tr>
-		<div style="display: grid; grid-auto-columns: minmax(400px, 600px);">
+		<div class="dashboard" style="display: grid; grid-auto-columns: minmax(400px, 600px);">
 		<span>
 		{% for host in group.hosts.all %} 
 			<a href='{{ host.id }}' style="text-decoration: none; ">
@@ -21,3 +18,4 @@ table, th, td {
 {% else %}
 	<p>No groups</p>
 {% endif %}
+{% endblock %}

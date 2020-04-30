@@ -1,0 +1,30 @@
+<body>
+	<style>
+	table, th, td {
+  	border: 1px solid black;
+	}
+	.page-header, .a {
+		background-color: #ffe300a8;
+		text-decoration: none;
+	}
+	.a {
+		text-decoration: none;
+	}
+	.dashboard, .hosts, .a{
+		display: grid; 
+		grid-auto-columns: minmax(400px, 600px);
+		text-decoration: none;
+	}
+	</style>
+	<div class="page-header" >
+		<h3><a href="/monitoring">YAMP</a></h3>
+	</div>
+	<div class="content container">
+		<div class="row">
+			<div class="col-md-8">
+				{% block content %}
+				{% endblock %}
+			</div>
+		</div>
+	</div>
+</body>

@@ -1,3 +1,5 @@
+{% extends 'monitoring/base.html' %}
+{% block content %}
 {% if host %}
 	<h1><div>{{ host.name }}</div></h1>
 	<div>{{ host.ipaddr }}</div>
@@ -5,3 +7,4 @@
 {% else %}
 	<p>No host details found.</p>
 {% endif %}
+{% endblock %}
