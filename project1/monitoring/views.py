@@ -26,3 +26,7 @@ def dashboard_detail( request, dashbrd_id):
 	context = { 'dashboard': dashboard , 'groups': groups }
 	return render( request, 'monitoring/dashboard_detail.html', context )
 
+def host_detail( request, dashbrd_id, host_id):
+	host = get_object_or_404( Host, id=host_id)
+	context = { 'host': host }
+	return render( request, 'monitoring/host_detail.html',context)

@@ -6,12 +6,16 @@ table, th, td {
 </style>
 {% if groups %}
 	{% for group in groups.all %}
-		<table style="text-align: left">
 		<tr>{{ group| linebreaks }}</tr>
+		<div style="display: grid; grid-auto-columns: minmax(400px, 600px);">
+		<span>
 		{% for host in group.hosts.all %} 
-			<td style="text-align: left ">{{host }}</td>
+			<a href='{{ host.id }}' style="text-decoration: none; ">
+				<button type="button">{{ host }}</button>
+			</a>
 		{% endfor %}
-		</table>
+		</span>
+		</div>
 	{% endfor %}
 
 {% else %}

@@ -1,6 +1,6 @@
 !bin
 !lib
 !share
-!**/__pycache__*/
-!**/migrations/
+!**/__pycache__*/**.pyc
+!**/migrations/**.pyc
 *.pyc
