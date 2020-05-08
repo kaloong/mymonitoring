@@ -1,0 +1,14 @@
+{% load base_extra %}
+
+<div id="topbar">
+	<div class="navbar">
+		<div class="navbar-side navbar-left"></div>
+		<div class="navbar-content">
+			<a class="{% navactive request 'index' %}"
+			href="{% url index %}"></a>
+			<a class="{% navactive request 'dashboard_detail' %}"
+			href="{% url dashboard_detail %}"></a>
+		</div>
+		<div class="navbar-side navbar-right"></div>
+	</div>
+</div>
