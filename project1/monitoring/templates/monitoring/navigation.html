@@ -1,13 +1,5 @@
-{% extends 'monitoring/base.html' %}
 {% block navigation %}
 {% if dashboard_list %}
-<!--
-	<select>
-	{% for dashboard in dashboard_list %}
-		<option onclick='document.location.href="/monitoring/dashboard/{{dashboard.id}}/"'>{{ dashboard.name }}</option> 
-	{% endfor %}
-	</select>
--->
 <div class="dashboard">
 <ul>
 	{% for dashboard in dashboard_list %}
@@ -15,8 +7,8 @@
 	{% endfor %}
 	
 </ul>
-</div>
 {% else %}
 	<p>No dashboards are available.</p>
 {% endif %}
 {% endblock %}
+</div>

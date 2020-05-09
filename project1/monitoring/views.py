@@ -20,18 +20,20 @@ def index(request):
 #	return render( request, 'monitoring/index.html', context)
 
 def dashboard_detail( request, dashbrd_id):
+	dashboard_list=Dashboard.objects.order_by('name')
 	#groups_list =  DashboardGroup.objects.filter(dashboard_id=dashbrd_id ) 
 	dashboard = get_object_or_404( Dashboard, pk=dashbrd_id )
 	groups_list = Group.objects.filter(groupdashboard=dashbrd_id)
 	groups = groups_list.all()
 	#groups = ', '.join( [ group.name for group in groups_list.filter(pk=dashboard_id) ])
-	context = { 'dashboard': dashboard , 'groups': groups }
+	context = { 'dashboard_list': dashboard_list, 'dashboard': dashboard , 'groups': groups }
 	return render( request, 'monitoring/dashboard_detail.html', context )
 
 
 def host_detail( request, dashbrd_id, host_id):
+	dashboard_list=Dashboard.objects.order_by('name')
 	host = get_object_or_404( Host, id=host_id)
-	context = { 'host': host }
+	context = { 'dashboard_list': dashboard_list,'host': host }
 	return render( request, 'monitoring/host_detail.html',context)
 
 class host_detail_view( DetailView):
