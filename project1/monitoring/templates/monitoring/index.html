@@ -11,7 +11,8 @@
 <div class="dashboard">
 <ul>
 	{% for dashboard in dashboard_list %}
-		<li><a href="/monitoring/dashboard/{{dashboard.id}}/">{{ dashboard.name }}</a></li>
+	<p> {{ request.path }}</p>
+		<li><a class="{% if request.path == dashboard.id %} active {% endif %}" href="/monitoring/dashboard/{{dashboard.id}}/">{{ dashboard.name }}</a></li>
 	{% endfor %}
 	
 </ul>

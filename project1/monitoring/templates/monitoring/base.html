@@ -1,10 +1,9 @@
 {% load static %}
-<body>
-	<link rel="stylesheet" type="text/css" href="{% static 'monitoring/style.css' %}">
+<body style="display: none">
 	<meta http-equiv="Page-Enter" content="blendTrans(duration=0)" />
 	<meta http-equiv="Page-Exit" content="blendTrans(duration=0)" />
 	<div class="page-header" >
-		<h3><a href="/monitoring">YAMP</a></h3>
+		<h3><a href="/monitoring">YAMS</a><h3>
 	</div>
 	{% include "monitoring/navigation.html" %}
 	<div class="content container">
@@ -15,4 +14,5 @@
 			</div>
 		</div>
 	</div>
+	<link rel="stylesheet" type="text/css" href="{% static 'monitoring/style.css' %}">
 </body>

@@ -1,11 +1,11 @@
 {% block navigation %}
 {% if dashboard_list %}
-<meta http-equiv="Page-Enter" content="blendTrans(duration=0)" />
-<meta http-equiv="Page-Exit" content="blendTrans(duration=0)" />
+<!--meta http-equiv="Page-Enter" content="blendTrans(duration=0)" /-->
+<!--meta http-equiv="Page-Exit" content="blendTrans(duration=0)" /-->
 <div class="dashboard">
 <ul>
 	{% for dashboard in dashboard_list %}
-		<li><a href="/monitoring/dashboard/{{dashboard.id}}/">{{ dashboard.name }}</a></li>
+	<li><a class="{% if '1' in request.path %}active{% endif %}" href="/monitoring/dashboard/{{dashboard.id}}/">{{ dashboard.name }}</a></li>
 	{% endfor %}
 	
 </ul>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, get_list_or_404
+from django.shortcuts import render, get_object_or_404, get_list_or_404,HttpResponseRedirect
 from monitoring.models import DashboardGroup, Dashboard, Group, Host
 from django.views.generic.detail import DetailView
 #from django.http import HttpResponse
@@ -31,10 +31,20 @@ def dashboard_detail( request, dashbrd_id):
 
 
 def host_detail( request, dashbrd_id, host_id):
-	dashboard_list=Dashboard.objects.order_by('name')
+	if request.method == 'GET' :
+		dashboard_list=Dashboard.objects.order_by('name')
+		host = get_object_or_404( Host, id=host_id)
+		context = { 'dashboard_list': dashboard_list,'host': host, 'prev_page':request.META['HTTP_REFERER'] }
+		return render( request, 'monitoring/host_detail.html',context)
+	else:
+		print("---")
+		pass
+		return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+def run_task( request, host_id):
 	host = get_object_or_404( Host, id=host_id)
-	context = { 'dashboard_list': dashboard_list,'host': host }
-	return render( request, 'monitoring/host_detail.html',context)
+	print("---- {} {}".format(host.id, host.name))
+	return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 class host_detail_view( DetailView):
 	model = Host

@@ -7,4 +7,17 @@
 {% else %}
 	<p>No host details found.</p>
 {% endif %}
+<script>
+function goBack() {
+	window.history.back();
+}
+
+</script>
+<div class="host_options">
+	<ul>
+		<li><a class="button" href="http://192.168.122.234:8000/admin/monitoring/host/{{ host.id }}/change/">Edit</a></li>
+		<li><a class="button" onclick="location.href='{%url 'run_task' host.id %}'" >Run</a></li>
+		<li><a class="button" href="javascript:window.history.back()">Back</a></li>
+	</ul>
+</div>
 {% endblock %}
