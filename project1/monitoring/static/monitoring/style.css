@@ -6,7 +6,10 @@ a:link {
 	text-decoration: none;
 }
 
-
+body {
+	margin: 0;
+	background-color: grey;
+}
 .button {
 	display: inline-block;
 	border-radius: 4px;
@@ -47,6 +50,7 @@ a:link {
 	right: 0;
 }
 .content {
+	padding-left: 10px;
 	position: fixed;
 	overflow: auto;
 	margin-top: 60px;
@@ -54,6 +58,11 @@ a:link {
 	background-color: #b3adaa;
 	width: 100%;
 	height: 100%;
+	/*
+	-webkit-perspective: 1000;
+	-webkit-backface-visibility: hidden; 
+	*/
+	-webkit-transform: translate3d(0,0,0);
 }
 .page-header {  
 	background-color: #4a4543;
@@ -89,7 +98,7 @@ a:link {
 .dashboard ul li a {
 	display: block;
 	color: black  ;
-	padding: 8px 16px;
+	padding: 10px 10px;
 	text-decoration: none;
 }
 
